@@ -92,12 +92,43 @@ class DoublyLinkedList:
     def insert_at_end(self,data):
         temp=Node(data)
         p=self.start
-        while p.nextis not None:
+        while p.next is not None:
             p=p.next
         p.next=temp
         temp.prev=p
 
     def insert_after(self,data,x):
+        p=self.start
+        while p is not None:
+            if p.info==x:
+                break
+            p=p.next
+
+        temp = Node(data)
+        temp.next=p.next
+        temp.prev=p
+        p.next.prev = temp
+        p.next=temp
+
+    def insert_before(self, data, x):
+        p = self.start
+        while p is not None:
+            if p.info == x:
+                break
+            p = p.next
+
+        temp = Node(data)
+        temp.prev-p.prev
+        temp.next=p
+        p.prev.next=temp
+        p.prev= temp
+
+    def delete_first_node(self):
+        self.start=self.start.next
+        self.start.prev=None
+
+
+
 
 
 
