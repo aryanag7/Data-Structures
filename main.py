@@ -128,6 +128,34 @@ class DoublyLinkedList:
         self.start.prev=None
 
 
+# Circular Linked list
+class Node:
+    def __init__(self, value):
+        self.info = value
+        self.link = None
+
+
+class CircularLinkedList:
+        def __init__(self):
+            self.last = None
+
+        def print_list(self):
+            p=self.last.link
+            while True:
+                print(p.info," ",end="")
+                p=p.link
+                if p == self.last.link:
+                    break
+            print()
+
+
+
+
+
+
+
+
+
 
 
 
