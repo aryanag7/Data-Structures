@@ -148,6 +148,30 @@ class CircularLinkedList:
                     break
             print()
 
+        def insert_in_begin(self,data):
+            temp =Node(data)
+            temp.link= self.last.link
+            self.last.link=temp
+
+        def insert_at_end(self,data):
+            temp = Node(data)
+            temp.link=self.last.link
+            self.last.link=temp
+            self.last=temp
+
+        def delete_first_node(self):
+            self.last.link=self.last.link.link
+
+        def delete_last_node(self):
+            p.link=self.last.link
+            self.last=p
+
+        def delete_in_between(self):
+            p.link=p.link.link
+
+
+
+
 
 
 
