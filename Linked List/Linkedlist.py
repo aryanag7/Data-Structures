@@ -1,57 +1,83 @@
 #Singly Linked List
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
 
 
-class SingleLinkedList:
-    def __init__(self):
-        self.head = None
 
-    def print_list(self):
-        if self.head is None:
-            print("List is empty.")
+class LL:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+def take_input():
+    input_list=list(map(int,input().split()))
+    head=None
+    tail=None
+    for ele in input_list:
+        if ele==-1:
+            break
+        new_node=LL(ele)
+        if head is None:
+            head=new_node
+            tail=new_node
         else:
-            p = self.head
-            while p is not None:
-                print(p.value, end='->')
-                p = p.next
+            tail.next=new_node
+            tail=tail.next
+    return head
 
-    def count_nodes(self):
-        c = 0
-        p = self.head
-        while p is not None:
-            c = c + 1
-            p = p.next
-        print("Count of nodes: " + str(c))
+def insert_at_begin(head,x):
+    new_node=LL(x)
+    new_node.next=head
+    head=new_node
+    return head
+def insert_at_end(head,x):
+    new_node=LL(x)
+    p=head
+    while p.next is not None:
+        p=p.next
 
-    def search_element(self, element):
-        pos = 1
-        p = self.head
-        while p is not None:
-            if p.value == element:
-                print("Element found at position: " + str(pos))
-                return pos
+    p.next=new_node
+    return head
 
-            p = p.next
-            pos = pos + 1
+def insert_in_between(head,ele,x):
+    new_node=LL(x)
+    p=head
+    while p is not None:
+        if p.data==ele:
+            break
+        p=p.next
+    
+    new_node.next=p.next
+    p.next=new_node
+    return head
+    
+def delete_at_first(head):
+    head=head.next
+    return  head
+def delete_last(head):
+    p=head
+    while p.next.next is not None:
+        p=p.next
+    p.next=None
+    return head
 
-        print("Element not found in the linked list.")
+def delete_in_between(head,x):
+    p=head
+    while p.next is not None:
+        if p.next.data==x:
+            break
+        p=p.next
+    p.next=p.next.next
+    return head
+    
 
-    def insert_at_start(self, value):
-        temp = Node(value)
-        temp.next = self.head
-        self.head = temp
+def print_ll(head):
+    p=head
+    while p is not None:
+        print(p.data,end="->")
+        p=p.next 
+    print("None")   
 
-    def insert_at_end(self, value):
-        temp = Node(value)
-        p = self.head
-        while p.next is not None:
-            p = p.next
-
-        p.next = temp
-        temp.next = None
+head=take_input()
+    
+     
 
 
 # Doubly linked list
